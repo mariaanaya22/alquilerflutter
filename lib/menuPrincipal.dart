@@ -37,19 +37,22 @@ class _MenuState extends State<Menu> {
               ),
             ),
             ListTile(
-              title: const Text('Datos personales'),
+              title: const Text('Numero de licencia'),
+              leading: Icon(Icons.badge_rounded),
               onTap: () {
                 // Acción al pulsar la opción
               },
             ),
              ListTile(
               title: const Text('Cambiar contraseña'),
+              leading: Icon(Icons.lock),
               onTap: () {
                 // Acción al pulsar la opción
               },
             ),
              ListTile(
               title: const Text('revisar alquileres'),
+              leading: Icon(Icons.search),
               onTap: () {
                 // Acción al pulsar la opción
               },
@@ -59,7 +62,9 @@ class _MenuState extends State<Menu> {
       ),
 
       body: const Center(
-        child: Text('Contenido del portafolio'),
+        child: Card(
+          
+        ),
       ),
     );
   }

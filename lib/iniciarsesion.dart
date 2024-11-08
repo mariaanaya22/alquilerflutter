@@ -22,7 +22,6 @@ class _inicioState extends State<inicio> {
           child: Column(
             
   
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
            
               Image.network("https://png.pngtree.com/png-vector/20240309/ourmid/pngtree-black-super-car-png-image_11921537.png", width: 400,),
@@ -75,8 +74,8 @@ class _inicioState extends State<inicio> {
       child: Text(
         "Recuperar",
         style: TextStyle(
-          color: Colors.red, // Color rojo para el texto "Regístrate"
-          fontWeight: FontWeight.bold, // Hacerlo en negrita
+          color: Colors.red,
+          fontWeight: FontWeight.bold,
         ),
       ),
     ),
@@ -84,21 +83,21 @@ class _inicioState extends State<inicio> {
 ),
        
 Row(
-  mainAxisAlignment: MainAxisAlignment.center, // Centra el texto
+  mainAxisAlignment: MainAxisAlignment.center, 
   children: [
     Text("¿No tienes cuenta?, "),
     GestureDetector(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Menu()) // Asegúrate de tener la clase de la página Registro
+          MaterialPageRoute(builder: (context) => Menu()) 
         );
       },
       child: Text(
         "Regístrate",
         style: TextStyle(
-          color: Colors.red, // Color rojo para el texto "Regístrate"
-          fontWeight: FontWeight.bold, // Hacerlo en negrita
+          color: Colors.red,
+          fontWeight: FontWeight.bold, 
         ),
       ),
     ),
