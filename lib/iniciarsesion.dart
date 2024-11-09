@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/menuPrincipal.dart';
 import 'package:flutter_application_1/registroUsuario.dart';
 
+
 class inicio extends StatefulWidget {
   const inicio({super.key});
 
@@ -28,7 +29,7 @@ class _inicioState extends State<inicio> {
                  Text("Bienvenido", 
                  style: TextStyle(fontSize: 50,  color: Colors.red)),
               Text(
-                "Inicia sesion para continuar",
+                "Inicia sesion para continuar" ,
                 style: TextStyle(fontSize: 20, color: Colors.grey[400]),
               ),
               SizedBox(height: 24.0),
@@ -51,22 +52,32 @@ class _inicioState extends State<inicio> {
               SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
+                   Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Menu()) 
+        );
+
                   print("email: ${_emailController.text} ");
                   print("password: ${_passwordController.text} ");
                 },
                 child: Text(
                   "Iniciar sesion",
+                     
+                    
+      
                   style: TextStyle(color: Colors.white,),
                 ),
+                
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                   minimumSize: Size(double.infinity, 50),
+             
                 ),
               ),
        SizedBox(height: 10),
        Row(
-  mainAxisAlignment: MainAxisAlignment.center, // Centra el texto
+  mainAxisAlignment: MainAxisAlignment.center, 
   children: [
     Text("¿Olvidaste tu contraseña?, "),
     GestureDetector(
@@ -90,7 +101,7 @@ Row(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Menu()) 
+          MaterialPageRoute(builder: (context) => registro()) 
         );
       },
       child: Text(

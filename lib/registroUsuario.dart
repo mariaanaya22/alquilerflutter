@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/menuPrincipal.dart';
 
 // ignore: camel_case_types
 class registro extends StatefulWidget {
@@ -60,6 +61,10 @@ class _registroState extends State<registro> {
               SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
+                   Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Menu()) 
+        );
                   print("email: ${_emailController.text} ");
                   print("password: ${_passwordController.text} ");
                 },
