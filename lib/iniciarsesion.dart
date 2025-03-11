@@ -19,20 +19,20 @@ class _inicioState extends State<inicio> {
     return Scaffold(
      
       body: Padding(
-          padding: EdgeInsets.all(16.6),
+          padding: const EdgeInsets.all(16.6),
           child: Column(
             
   
             children: [
            
               Image.network("https://png.pngtree.com/png-vector/20240309/ourmid/pngtree-black-super-car-png-image_11921537.png", width: 400,),
-                 Text("Bienvenido", 
+                 const Text("Bienvenido", 
                  style: TextStyle(fontSize: 50,  color: Colors.red)),
               Text(
                 "Inicia sesion para continuar" ,
                 style: TextStyle(fontSize: 20, color: Colors.grey[400]),
               ),
-              SizedBox(height: 24.0),
+              const SizedBox(height: 24.0),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -41,7 +41,7 @@ class _inicioState extends State<inicio> {
                       borderRadius: BorderRadius.circular(10))),
                 
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: _passwordController,
                  decoration: InputDecoration(
@@ -49,17 +49,24 @@ class _inicioState extends State<inicio> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10))),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
                    Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Menu()) 
+          MaterialPageRoute(builder: (context) => const Menu()) 
         );
 
                   print("email: ${_emailController.text} ");
                   print("password: ${_passwordController.text} ");
                 },
+                
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(double.infinity, 50),
+             
+                ),
                 child: Text(
                   "Iniciar sesion",
                      
@@ -67,22 +74,15 @@ class _inicioState extends State<inicio> {
       
                   style: TextStyle(color: Colors.white,),
                 ),
-                
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white,
-                  minimumSize: Size(double.infinity, 50),
-             
-                ),
               ),
-       SizedBox(height: 10),
+       const SizedBox(height: 10),
        Row(
   mainAxisAlignment: MainAxisAlignment.center, 
   children: [
-    Text("¿Olvidaste tu contraseña?, "),
+    const Text("¿Olvidaste tu contraseña?, "),
     GestureDetector(
       onTap: () { },
-      child: Text(
+      child: const Text(
         "Recuperar",
         style: TextStyle(
           color: Colors.red,
@@ -96,15 +96,15 @@ class _inicioState extends State<inicio> {
 Row(
   mainAxisAlignment: MainAxisAlignment.center, 
   children: [
-    Text("¿No tienes cuenta?, "),
+    const Text("¿No tienes cuenta?, "),
     GestureDetector(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => registro()) 
+          MaterialPageRoute(builder: (context) => const Registro()) 
         );
       },
-      child: Text(
+      child: const Text(
         "Regístrate",
         style: TextStyle(
           color: Colors.red,

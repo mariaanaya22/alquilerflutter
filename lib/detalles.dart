@@ -38,13 +38,13 @@ class _DetallesState extends State<Detalles> {
         );
               
             },
-            child: const Text(
-              "alquilar Auto",
-              style: TextStyle(color: Colors.white),
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
               minimumSize: const Size(double.infinity, 50),
+            ),
+            child: const Text(
+              "alquilar Auto",
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],
@@ -90,13 +90,13 @@ class _Detalles2State extends State<Detalles2> {
         );
               
             },
-            child: const Text(
-              "alquilar Auto",
-              style: TextStyle(color: Colors.white),
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
               minimumSize: const Size(double.infinity, 50),
+            ),
+            child: const Text(
+              "alquilar Auto",
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],
@@ -144,13 +144,13 @@ class _Detalles3State extends State<Detalles3> {
         );
               
             },
-            child: const Text(
-              "alquilar Auto",
-              style: TextStyle(color: Colors.white),
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
               minimumSize: const Size(double.infinity, 50),
+            ),
+            child: const Text(
+              "alquilar Auto",
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],
@@ -196,13 +196,13 @@ class _Detalles4State extends State<Detalles4> {
         );
               
             },
-            child: const Text(
-              "alquilar Auto",
-              style: TextStyle(color: Colors.white),
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
               minimumSize: const Size(double.infinity, 50),
+            ),
+            child: const Text(
+              "alquilar Auto",
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ],

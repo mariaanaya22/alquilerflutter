@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/detalles.dart';
+import 'package:flutter_application_1/controllers/autosControllers.dart';
+import 'package:flutter_application_1/iniciarsesion.dart'; // Asegúrate de importar la pantalla de inicio de sesión
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -9,12 +11,37 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+  final AutosController autosController = AutosController();
+  List<Map<String, dynamic>> autosDisponibles = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _cargarAutos();
+  }
+
+  Future<void> _cargarAutos() async {
+    final autos = await autosController.obtenerAutosDisponibles();
+    setState(() {
+      autosDisponibles = autos;
+      isLoading = false;
+    });
+  }
+
+  void _cerrarSesion() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const inicio()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: const Text('alquiler de vehiculos'),
+        title: const Text('Alquiler de Vehículos'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -24,120 +51,74 @@ class _MenuState extends State<Menu> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                 
                   Image.network(
                     "https://cdn-icons-png.freepik.com/512/10796/10796957.png",
-              
-                    height: 100, 
+                    height: 100,
                   ),
                   const Text(
-                    'Menu',
+                    'Menú',
                     style: TextStyle(color: Colors.red, fontSize: 24),
                   ),
                 ],
               ),
             ),
             ListTile(
-              title: const Text('Numero de licencia'),
-              leading: Icon(Icons.badge_rounded),
-              onTap: () {
-                // Acción al pulsar la opción
-              },
+              title: const Text('Número de licencia'),
+              leading: const Icon(Icons.badge_rounded),
+              onTap: () {},
             ),
-             ListTile(
+            ListTile(
               title: const Text('Cambiar contraseña'),
-              leading: Icon(Icons.lock),
-              onTap: () {
-                // Acción al pulsar la opción
-              },
+              leading: const Icon(Icons.lock),
+              onTap: () {},
             ),
-             ListTile(
-              title: const Text('revisar alquileres'),
-              leading: Icon(Icons.search),
-              onTap: () {
-                // Acción al pulsar la opción
-              },
+            ListTile(
+              title: const Text('Revisar alquileres'),
+              leading: const Icon(Icons.search),
+              onTap: () {},
+            ),
+            const Divider(),
+            ListTile(
+              title: const Text(
+                'Cerrar Sesión',
+                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+              ),
+              leading: const Icon(Icons.exit_to_app, color: Colors.red),
+              onTap: _cerrarSesion,
             ),
           ],
         ),
       ),
-
-      body: ListView(
-      
-    children : [ 
-      
-    
-           Card(child: ListTile(
-            
-            title: Text("Toyota corrolla " ),
-            subtitle: Text("Año 2022", style:TextStyle(color:Colors.grey) ),
-
-     
-            leading: Image.network("https://images.vexels.com/media/users/3/258908/isolated/preview/405070adc9b39a8331bb7d0a6a08a905-transporte-de-coche-deportivo-rojo.png"),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-               Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Detalles()) 
-        );
-
-            },
-          ),
-          ),
-         Card(child: ListTile(
-            
-            title: Text("ford mustaing " ),
-            subtitle: Text("Año 2023-99.99/dia", style:TextStyle(color:Colors.grey) ),
-
-     
-            leading: Image.network("https://images.vexels.com/media/users/3/258908/isolated/preview/405070adc9b39a8331bb7d0a6a08a905-transporte-de-coche-deportivo-rojo.png"),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Detalles2()) 
-        );
-
-            },
-          ),
-          ),
-           Card(child: ListTile(
-            
-            title: Text("nissan senta" ),
-            subtitle: Text("Año 2021-89.9/dia", style:TextStyle(color:Colors.grey) ),
-
-     
-            leading: Image.network("https://images.vexels.com/media/users/3/258908/isolated/preview/405070adc9b39a8331bb7d0a6a08a905-transporte-de-coche-deportivo-rojo.png"),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-               Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Detalles3()) 
-        );
-
-            },
-          ),
-          ),
-          Card(child: ListTile(
-            
-            title: Text("chevrolet camaro " ),
-            subtitle: Text("Año 202-100/dia", style:TextStyle(color:Colors.grey) ),
-
-     
-            leading: Image.network("https://images.vexels.com/media/users/3/258908/isolated/preview/405070adc9b39a8331bb7d0a6a08a905-transporte-de-coche-deportivo-rojo.png"),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-               Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Detalles4()) 
-        );
-
-            },
-          ),
-          ),
-    ]
-        ),
-      );
-    
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: autosDisponibles.length,
+              itemBuilder: (context, index) {
+                final auto = autosDisponibles[index];
+                return Card(
+                  child: ListTile(
+                    title: Text("${auto['marca']} ${auto['modelo']}"),
+                    subtitle: Text(
+                      "Año ${auto['anio']} - ${auto['precio']}",
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                    leading: Image.network(
+                      auto['imagen'],
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Detalles()),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
+    );
   }
 }

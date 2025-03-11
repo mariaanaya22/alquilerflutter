@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MetodoPago extends StatelessWidget {
+  const MetodoPago({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,21 +12,21 @@ class MetodoPago extends StatelessWidget {
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
-        children: [
+        children: const [
           ListTile(
             leading: Icon(Icons.credit_card, color: Colors.red),
-            title: const Text('Tarjeta de Crédito o Débito'),
+            title: Text('Tarjeta de Crédito o Débito'),
            
           ),
-          const Divider(),
+          Divider(),
           ListTile(
             leading: Icon(Icons.paypal, color: Colors.red),
-            title: const Text('PayPal'),
+            title: Text('PayPal'),
           ),
-          const Divider(),
+          Divider(),
           ListTile(
             leading: Icon(Icons.account_balance, color: Colors.red),
-            title: const Text('Transferencia Bancaria'),
+            title: Text('Transferencia Bancaria'),
           ),
         ],
       ),

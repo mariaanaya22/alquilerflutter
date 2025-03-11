@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/iniciarsesion.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: inicio(),
-       
       ),
     );
   }
